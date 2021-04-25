@@ -8,4 +8,19 @@ public class TestResponse : MonoBehaviour
     {
         print("Button Pressed");
     }
+
+    public void OpenBriefcase(GameObject lid)
+    {
+        lid.GetComponent<OpenBriefcase>().OpenCase();
+
+
+        //try
+        //{
+        //    lid.GetComponent<OpenBriefcase>().OpenCase();
+        //}
+        //catch
+        //{
+        //    Debug.LogError("OpenBriefcase component not found");
+        //}
+    }
 }
