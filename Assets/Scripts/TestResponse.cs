@@ -13,7 +13,6 @@ public class TestResponse : MonoBehaviour
     {
         lid.GetComponent<OpenBriefcase>().OpenCase();
 
-
         //try
         //{
         //    lid.GetComponent<OpenBriefcase>().OpenCase();

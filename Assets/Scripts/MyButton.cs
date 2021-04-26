@@ -21,21 +21,23 @@ public class MyButton : MonoBehaviour {
         // If our distance is greater than what we specified as a press
         // set it to our max distance and register a press if we haven't already
         float distance = Mathf.Abs(transform.position.y - startPos.y);
-        if (distance >= pressLength) {
+        if (distance >= pressLength && pressed == false) {
             // Prevent the button from going past the pressLength
             transform.position = new Vector3(transform.position.x, startPos.y - pressLength, transform.position.z);
             if (!pressed) {
                 pressed = true;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+
                 // If we have an event, invoke it
                 downEvent?.Invoke();
             }
         }
-        else {
-            // If we aren't all the way down, reset our press
-            pressed = false;
-        }
+        //else {
+        //    // If we aren't all the way down, reset our press
+        //    //pressed = false;
+        //}
         // Prevent button from springing back up past its original position
-        if (transform.position.y > startPos.y) {
+        if (transform.position.y > startPos.y && pressed == false) {
             transform.position = new Vector3(transform.position.x, startPos.y, transform.position.z);
         }
     }
