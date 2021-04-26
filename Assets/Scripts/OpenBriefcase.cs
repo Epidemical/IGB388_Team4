@@ -35,7 +35,7 @@ public class OpenBriefcase : MonoBehaviour
                 break;
         }
         //endRot = Quaternion.Euler(-goalAngle, axis.transform.rotation.eulerAngles.z, axis.transform.rotation.eulerAngles.y);
-        OpenCase();
+        //OpenCase();
     }
 
     // Update is called once per frame
