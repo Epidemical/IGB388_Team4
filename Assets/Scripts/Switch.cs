@@ -42,11 +42,11 @@ public class Switch : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.FreezeAll;
             }
         }
-        else
-        {
-            // If we aren't all the way down, reset our press
-            pressed = false;
-        }
+        //else
+        //{
+        //    // If we aren't all the way down, reset our press
+        //    pressed = false;
+        //}
         // Prevent button from springing back up past its original position
         if (transform.position.x < startPos.x && movingRight)
         {
