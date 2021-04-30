@@ -17,6 +17,25 @@ public class OvrAvatarSkinnedMeshPBSV2RenderComponent : OvrAvatarRenderComponent
     private const string EYE_MATERIAL_NAME = "eye_material";
     private const string DEFAULT_MATERIAL_NAME = "_material";
 
+    private struct FingerBone
+    {
+        public readonly float radius;
+        public readonly float height;
+        public FingerBone(float radius, float height)
+        {
+            this.radius = radius;
+            this.height = height;
+        }
+
+        public Vector3 GetCenter(bool isLeftHand)
+        {
+            return new Vector3(((isLeftHand) ? -1 : 1) * height / 2.0f, 0, 0);
+        }
+    };
+
+    private readonly FingerBone phalanges = new FingerBone(0.01f, 0.03f);
+    private readonly FingerBone metacarpals = new FingerBone(0.01f, 0.05f);
+
     internal void Initialize(
         IntPtr renderPart,
         ovrAvatarRenderPart_SkinnedMeshRenderPBS_V2 skinnedMeshRender,
@@ -110,6 +129,52 @@ public class OvrAvatarSkinnedMeshPBSV2RenderComponent : OvrAvatarRenderComponent
         blendShapeParams.blendShapeParams = new float[64];
 
         blendShapeCount = mesh.sharedMesh.blendShapeCount;
+
+        foreach (Transform bone in bones)
+        {
+            if (!bone.name.Contains("ignore"))
+                CreateCollider(bone);
+        }
+    }
+
+    private void CreateCollider(Transform transform)
+    {
+        if(transform.name.Equals("hand_left") || transform.name.Equals("hand_right"))
+        {
+            Rigidbody rb = transform.gameObject.AddComponent<Rigidbody>();
+            rb.useGravity = false;
+        }
+
+        if (!transform.gameObject.GetComponent(typeof(CapsuleCollider)) && !transform.gameObject.GetComponent(typeof(SphereCollider)) && transform.name.Contains("hands"))
+        {
+            if (transform.name.Contains("thumb") || transform.name.Contains("index") || transform.name.Contains("middle") || transform.name.Contains("ring") || transform.name.Contains("pinky"))
+            {
+                if (!transform.name.EndsWith("0"))
+                {
+                    CapsuleCollider collider = transform.gameObject.AddComponent<CapsuleCollider>();
+                    if (!transform.name.EndsWith("1"))
+                    {
+                        collider.radius = phalanges.radius;
+                        collider.height = phalanges.height;
+                        collider.center = phalanges.GetCenter(transform.name.Contains("_l_"));
+                        collider.direction = 0;
+                    }
+                    else
+                    {
+                        collider.radius = metacarpals.radius;
+                        collider.height = metacarpals.height;
+                        collider.center = metacarpals.GetCenter(transform.name.Contains("_l_"));
+                        collider.direction = 0;
+                    }
+                }
+            }
+            else if (transform.name.Contains("grip"))
+            {
+                SphereCollider collider = transform.gameObject.AddComponent<SphereCollider>();
+                collider.radius = 0.04f;
+                collider.center = new Vector3(((transform.name.Contains("_l_")) ? -1 : 1) * 0.01f, 0.01f, 0.02f);
+            }
+        }
     }
 
     public void UpdateSkinnedMeshRender(
