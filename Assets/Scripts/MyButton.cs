@@ -30,6 +30,7 @@ public class MyButton : MonoBehaviour {
 
                 // If we have an event, invoke it
                 downEvent?.Invoke();
+                GetComponent<AudioSource>().Play();
             }
         }
         //else {

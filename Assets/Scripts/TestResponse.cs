@@ -23,7 +23,7 @@ public class TestResponse : MonoBehaviour
     public void OpenBriefcase(GameObject lid)
     {
         lid.GetComponent<OpenBriefcase>().OpenCase();
-
+        //Debug.Log("BRIEFCASE OPENING");
         //try
         //{
         //    lid.GetComponent<OpenBriefcase>().OpenCase();

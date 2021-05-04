@@ -11,7 +11,7 @@ public class OpenBriefcase : MonoBehaviour
     public float goalAngle;
     public float speed;
     public RotateOn direction;
-    private GameObject axis;
+    //private GameObject axis;
     private float startTime;
     private bool moveLid = false;
     private Quaternion startRot;
@@ -21,17 +21,15 @@ public class OpenBriefcase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        axis = transform.parent.gameObject;
-
-        startRot = axis.transform.rotation;
+        startRot = transform.rotation;
 
         switch (direction)
         {
             case RotateOn.X:
-                endRot = Quaternion.Euler(-goalAngle, axis.transform.rotation.eulerAngles.y, axis.transform.rotation.eulerAngles.z);
+                endRot = Quaternion.Euler(-goalAngle, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
                 break;
             case RotateOn.Z:
-                endRot = Quaternion.Euler(-goalAngle, axis.transform.rotation.eulerAngles.z, axis.transform.rotation.eulerAngles.y);
+                endRot = Quaternion.Euler(-goalAngle, transform.rotation.eulerAngles.z, transform.rotation.eulerAngles.y);
                 break;
         }
         //endRot = Quaternion.Euler(-goalAngle, axis.transform.rotation.eulerAngles.z, axis.transform.rotation.eulerAngles.y);
@@ -47,15 +45,15 @@ public class OpenBriefcase : MonoBehaviour
             float progress = (Time.time - startTime) * speed;
             float fractionOfJourney = progress / goalAngle;
 
-            Debug.Log(Quaternion.Lerp(startRot, endRot, fractionOfJourney).eulerAngles);
-            axis.transform.rotation = Quaternion.Lerp(startRot, endRot, fractionOfJourney);
+            //Debug.Log(Quaternion.Lerp(startRot, endRot, fractionOfJourney).eulerAngles);
+            this.transform.rotation = Quaternion.Lerp(startRot, endRot, fractionOfJourney);
         }
         
     }
 
     public void OpenCase()
     {
-        Debug.LogWarning("Case should open now");
+        //Debug.LogWarning("Case should open now");
 
         startTime = Time.time;
         moveLid = true;
