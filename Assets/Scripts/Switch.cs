@@ -38,6 +38,7 @@ public class Switch : MonoBehaviour
                 pressed = true;
                 // If we have an event, invoke it
                 downEvent?.Invoke();
+                GetComponent<AudioSource>().Play();
 
                 rb.constraints = RigidbodyConstraints.FreezeAll;
             }

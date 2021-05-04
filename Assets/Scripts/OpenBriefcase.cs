@@ -57,5 +57,7 @@ public class OpenBriefcase : MonoBehaviour
 
         startTime = Time.time;
         moveLid = true;
+        GetComponent<AudioSource>().Play();
+
     }
 }
