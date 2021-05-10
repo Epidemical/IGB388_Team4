@@ -16,6 +16,7 @@ public class MyButton : MonoBehaviour {
     public bool pressed;
     public ButtonEvent downEvent;
     public Axis direction = Axis.Y;
+    public bool movingToNegative = true;
 
     Vector3 startPos;
     Rigidbody rb;
@@ -70,15 +71,24 @@ public class MyButton : MonoBehaviour {
             }
         }
 
+        //ugly code, consider revisiting
         // Prevent button from springing back up past its original position
-        if (direction == Axis.X && transform.position.x > startPos.x && !pressed) {
+        if (direction == Axis.X && transform.position.x > startPos.x && !pressed && movingToNegative) {
+            transform.position = new Vector3(startPos.x, transform.position.y, transform.position.z);
+        }
+        else if (direction == Axis.X && transform.position.x < startPos.x && !pressed && !movingToNegative)
+        {
             transform.position = new Vector3(startPos.x, transform.position.y, transform.position.z);
         }
         else if(direction == Axis.Y && transform.position.y > startPos.y && !pressed)
         {
             transform.position = new Vector3(transform.position.x, startPos.y, transform.position.z);
         }
-        else if (direction == Axis.Z && transform.position.z > startPos.z && !pressed)
+        else if (direction == Axis.Z && transform.position.z > startPos.z && !pressed && movingToNegative)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z);
+        }
+        else if (direction == Axis.Z && transform.position.z < startPos.z && !pressed && !movingToNegative)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z);
         }
