@@ -1486,7 +1486,7 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -1496,7 +1496,12 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ButtonPressed
+      value: SimonSays
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
+        type: 3}
+      propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -1640,7 +1645,7 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -1650,7 +1655,12 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ButtonPressed
+      value: SimonSays
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
+        type: 3}
+      propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -1706,6 +1716,56 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1362256685}
+    - target: {fileID: 8412698847569637028, guid: ab5679b65ba8f0a4795b2ed08b4bd364,
+        type: 3}
+      propertyPath: SSButtonOrder.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412698847569637028, guid: ab5679b65ba8f0a4795b2ed08b4bd364,
+        type: 3}
+      propertyPath: SSButtonOrder.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412698847569637028, guid: ab5679b65ba8f0a4795b2ed08b4bd364,
+        type: 3}
+      propertyPath: SSButtonOrder.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412698847569637028, guid: ab5679b65ba8f0a4795b2ed08b4bd364,
+        type: 3}
+      propertyPath: SSButtonOrder.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412698847569637028, guid: ab5679b65ba8f0a4795b2ed08b4bd364,
+        type: 3}
+      propertyPath: SSButtonOrder.Array.data[5]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412698847569637028, guid: ab5679b65ba8f0a4795b2ed08b4bd364,
+        type: 3}
+      propertyPath: SSPatternOrder.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412698847569637028, guid: ab5679b65ba8f0a4795b2ed08b4bd364,
+        type: 3}
+      propertyPath: SSPatternOrder.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412698847569637028, guid: ab5679b65ba8f0a4795b2ed08b4bd364,
+        type: 3}
+      propertyPath: SSPatternOrder.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412698847569637028, guid: ab5679b65ba8f0a4795b2ed08b4bd364,
+        type: 3}
+      propertyPath: SSPatternOrder.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412698847569637028, guid: ab5679b65ba8f0a4795b2ed08b4bd364,
+        type: 3}
+      propertyPath: SSPatternOrder.Array.data[5]
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8412698847569637029, guid: ab5679b65ba8f0a4795b2ed08b4bd364,
         type: 3}
       propertyPath: m_RootOrder
@@ -1885,7 +1945,7 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -1895,7 +1955,12 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ButtonPressed
+      value: SimonSays
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
+        type: 3}
+      propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -2175,7 +2240,7 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -2185,7 +2250,7 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ButtonPressed
+      value: SimonSays
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -2240,7 +2305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1349732715}
   m_Layer: 0
-  m_Name: Simon Says buttons
+  m_Name: SimonSaysButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2480,7 +2545,7 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -2490,7 +2555,12 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ButtonPressed
+      value: SimonSays
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
+        type: 3}
+      propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -3217,7 +3287,7 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -3227,7 +3297,12 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ButtonPressed
+      value: SimonSays
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
+        type: 3}
+      propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}

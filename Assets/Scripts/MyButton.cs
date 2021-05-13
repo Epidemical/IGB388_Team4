@@ -25,19 +25,7 @@ public class MyButton : MonoBehaviour {
         startPos = transform.position;
         rb = GetComponent<Rigidbody>();
 
-        // set the rigidbody constraints based on the direction
-        switch (direction)
-        {
-            case Axis.X:
-                rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
-                break;
-            case Axis.Y:
-                rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
-                break;
-            case Axis.Z:
-                rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
-                break;
-        }
+        ResetButton();
     }
 
     void Update() {
@@ -127,5 +115,25 @@ public class MyButton : MonoBehaviour {
             }
         }
 
+    }
+
+    public void ResetButton()
+    {
+        pressed = false;
+        transform.position = startPos;
+
+        // set the rigidbody constraints based on the direction
+        switch (direction)
+        {
+            case Axis.X:
+                rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+                break;
+            case Axis.Y:
+                rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+                break;
+            case Axis.Z:
+                rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
+                break;
+        }
     }
 }
