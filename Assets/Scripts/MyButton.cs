@@ -61,6 +61,33 @@ public class MyButton : MonoBehaviour {
         if (distance >= pressLength && !pressed) {
             // Prevent the button from going past the pressLength
             //transform.position = new Vector3(transform.position.x, startPos.y - pressLength, transform.position.z);
+            switch (direction)
+            {
+                case Axis.X:
+                    if (movingToNegative)
+                    {
+                        transform.position = new Vector3(startPos.x - pressLength, transform.position.y, transform.position.z);
+                    }
+                    else
+                    {
+                        transform.position = new Vector3(startPos.x + pressLength, transform.position.y, transform.position.z);
+                    }
+                    break;
+                case Axis.Y:
+                    transform.position = new Vector3(transform.position.x, startPos.y - pressLength, transform.position.z);
+                    break;
+                case Axis.Z:
+                    if (movingToNegative)
+                    {
+                        transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z - pressLength);
+                    }
+                    else
+                    {
+                        transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z + pressLength);
+                    }
+                    break;
+            }
+
             if (!pressed) {
                 pressed = true;
                 rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -73,24 +100,32 @@ public class MyButton : MonoBehaviour {
 
         //ugly code, consider revisiting
         // Prevent button from springing back up past its original position
-        if (direction == Axis.X && transform.position.x > startPos.x && !pressed && movingToNegative) {
-            transform.position = new Vector3(startPos.x, transform.position.y, transform.position.z);
-        }
-        else if (direction == Axis.X && transform.position.x < startPos.x && !pressed && !movingToNegative)
+        if (!pressed)
         {
-            transform.position = new Vector3(startPos.x, transform.position.y, transform.position.z);
+
+            if (direction == Axis.X && transform.position.x > startPos.x && movingToNegative)
+            {
+                transform.position = new Vector3(startPos.x, transform.position.y, transform.position.z);
+            }
+            else if (direction == Axis.X && transform.position.x < startPos.x && !movingToNegative)
+            {
+                transform.position = new Vector3(startPos.x, transform.position.y, transform.position.z);
+            }
+
+            else if (direction == Axis.Y && transform.position.y > startPos.y)
+            {
+                transform.position = new Vector3(transform.position.x, startPos.y, transform.position.z);
+            }
+
+            else if (direction == Axis.Z && transform.position.z > startPos.z && movingToNegative)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z);
+            }
+            else if (direction == Axis.Z && transform.position.z < startPos.z && !movingToNegative)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z);
+            }
         }
-        else if(direction == Axis.Y && transform.position.y > startPos.y && !pressed)
-        {
-            transform.position = new Vector3(transform.position.x, startPos.y, transform.position.z);
-        }
-        else if (direction == Axis.Z && transform.position.z < startPos.z && !pressed && movingToNegative)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z);
-        }
-        else if (direction == Axis.Z && transform.position.z > startPos.z && !pressed && !movingToNegative)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z);
-        }
+
     }
 }
