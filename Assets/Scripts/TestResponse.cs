@@ -5,6 +5,7 @@ using UnityEngine;
 public class TestResponse : MonoBehaviour
 {
     public GameObject lid;
+    public GameObject door;
     public int goal = 5;
     private int count = 0;
     public void ButtonTest()
@@ -20,7 +21,7 @@ public class TestResponse : MonoBehaviour
     }
 
 
-    public void OpenBriefcase(GameObject lid)
+    private void OpenBriefcase(GameObject lid)
     {
         lid.GetComponent<OpenBriefcase>().OpenCase();
         //Debug.Log("BRIEFCASE OPENING");
@@ -32,5 +33,10 @@ public class TestResponse : MonoBehaviour
         //{
         //    Debug.LogError("OpenBriefcase component not found");
         //}
+    }
+
+    public void OpenDoor()
+    {
+        door.GetComponent<Door>().Open();
     }
 }
