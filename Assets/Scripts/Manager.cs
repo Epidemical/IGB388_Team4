@@ -19,8 +19,7 @@ public class Manager : MonoBehaviour
         GameObject buttonCollection = GameObject.Find("SimonSaysButtons");
         if (buttonCollection)
         {
-
-            SSButtons = GetComponentsInChildren<MyButton>();
+            SSButtons = buttonCollection.GetComponentsInChildren<MyButton>();
         }
         else
         {
@@ -62,18 +61,18 @@ public class Manager : MonoBehaviour
 
     public void SimonSays(int buttonIndex)
     {
-        //Debug.Log(buttonIndex);
-        //Debug.Log(SSPatternOrder[SSPatternIndex]);
+        Debug.Log(buttonIndex);
+        Debug.Log(SSPatternOrder[SSPatternIndex]);
         if(buttonIndex == SSPatternOrder[SSPatternIndex])
         {
-            buttonIndex++;
+            SSPatternIndex++;
         }
         else
         {
             foreach(MyButton button in SSButtons)
             {
-                Debug.Log(button.gameObject.name);
                 button.ResetButton();
+                SSPatternIndex = 0;
             }
         }
 

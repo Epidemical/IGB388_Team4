@@ -1501,7 +1501,7 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -1960,7 +1960,7 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
@@ -2560,7 +2560,7 @@ PrefabInstance:
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
       propertyPath: downEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5312401284727147906, guid: ad8405de4e1d0334ca62cafbe22a8840,
         type: 3}
