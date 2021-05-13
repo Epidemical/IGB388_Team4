@@ -84,11 +84,11 @@ public class MyButton : MonoBehaviour {
         {
             transform.position = new Vector3(transform.position.x, startPos.y, transform.position.z);
         }
-        else if (direction == Axis.Z && transform.position.z > startPos.z && !pressed && movingToNegative)
+        else if (direction == Axis.Z && transform.position.z < startPos.z && !pressed && movingToNegative)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z);
         }
-        else if (direction == Axis.Z && transform.position.z < startPos.z && !pressed && !movingToNegative)
+        else if (direction == Axis.Z && transform.position.z > startPos.z && !pressed && !movingToNegative)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z);
         }
