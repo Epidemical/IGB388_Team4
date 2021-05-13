@@ -188,7 +188,7 @@ public class OVRGrabber : MonoBehaviour
         int refCount = 0;
         m_grabCandidates.TryGetValue(grabbable, out refCount);
         m_grabCandidates[grabbable] = refCount + 1;
-        
+        grabbable.gameObject.GetComponent<Outline>().enabled = true;
     }
 
     void OnTriggerExit(Collider otherCollider)
@@ -203,6 +203,8 @@ public class OVRGrabber : MonoBehaviour
         {
             return;
         }
+
+        grabbable.gameObject.GetComponent<Outline>().enabled = false;
 
         if (refCount > 1)
         {
