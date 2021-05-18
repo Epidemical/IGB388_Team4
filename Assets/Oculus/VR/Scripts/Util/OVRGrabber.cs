@@ -271,6 +271,9 @@ public class OVRGrabber : MonoBehaviour
             m_grabbedObj = closestGrabbable;
             m_grabbedObj.GrabBegin(this, closestGrabbableCollider);
 
+            if (m_grabbedObj.GetComponent<PipeSnap>() != null)
+                //m_grabbedObj.GetComponent<PipeSnap>().PickUpReset();
+
             m_lastPos = transform.position;
             m_lastRot = transform.rotation;
 
@@ -347,6 +350,7 @@ public class OVRGrabber : MonoBehaviour
 
     protected void GrabEnd()
     {
+        //Debug.Log("grabend called");
         if (m_grabbedObj != null)
         {
 			OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(m_controller), orientation = OVRInput.GetLocalControllerRotation(m_controller) };
@@ -366,6 +370,10 @@ public class OVRGrabber : MonoBehaviour
 
     protected void GrabbableRelease(Vector3 linearVelocity, Vector3 angularVelocity)
     {
+        //Debug.Log("grabbable release called");
+
+        if (m_grabbedObj.GetComponent<PipeSnap>() != null)
+            m_grabbedObj.GetComponent<PipeSnap>().SnapToNode();
         m_grabbedObj.GrabEnd(linearVelocity, angularVelocity);
         if(m_parentHeldObject) m_grabbedObj.transform.parent = null;
         m_grabbedObj = null;
