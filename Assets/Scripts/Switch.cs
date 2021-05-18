@@ -10,6 +10,7 @@ public class Switch : MonoBehaviour
     public bool pressed;
     public SwitchEvent downEvent;
     public bool movingRight;
+    public bool isRadio = false;
 
     Vector3 startPos;
     Rigidbody rb;
@@ -23,17 +24,17 @@ public class Switch : MonoBehaviour
     void Update()
     {
         // If our distance is greater than what we specified as a switch
-        // set it to our max distance and register a switch if we haven't already
-        float distance = Mathf.Abs(transform.position.x - startPos.x);
+        // set it to our max distance and register a hit if we haven't already
+        float distance = Mathf.Abs(transform.position.z - startPos.z);
         if (distance >= pushLength)
         {
             // Prevent the switch from going past the pressLength
             if(movingRight)
-                transform.position = new Vector3(startPos.x + pushLength, transform.position.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z + pushLength);
             else
-                transform.position = new Vector3(startPos.x - pushLength, transform.position.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z - pushLength);
 
-            if (!pressed)
+            if (!pressed && !isRadio)
             {
                 pressed = true;
                 // If we have an event, invoke it
@@ -49,14 +50,26 @@ public class Switch : MonoBehaviour
         //    pressed = false;
         //}
         // Prevent button from springing back up past its original position
-        if (transform.position.x < startPos.x && movingRight)
+        if (transform.position.z < startPos.z && movingRight)
         {
-            transform.position = new Vector3(startPos.x, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z);
         }
-        else if (transform.position.x > startPos.x && !movingRight)
+        else if (transform.position.z > startPos.z && !movingRight)
         {
-            transform.position = new Vector3(startPos.x, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z);
         }
 
+    }
+
+    public float PercentThrough()
+    {
+        float distanceTravelled = 0;
+
+        if (movingRight)
+            distanceTravelled = transform.position.z - startPos.z;
+        else
+            distanceTravelled = startPos.z - transform.position.z;
+
+        return distanceTravelled / pushLength;
     }
 }

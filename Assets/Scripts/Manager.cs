@@ -6,6 +6,7 @@ public class Manager : MonoBehaviour
 {
     public GameObject lid;
     public GameObject door;
+    public GameObject radioSwitch;
     public int goal = 5;
     private int count = 0;
 
@@ -80,5 +81,10 @@ public class Manager : MonoBehaviour
         {
             Debug.Log("SIMON SAYS COMPLETE");
         }
+    }
+
+    public void RadioButtonPress()
+    {
+        radioSwitch.GetComponent<Radio>().ChangeState();
     }
 }
