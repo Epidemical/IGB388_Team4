@@ -118,7 +118,7 @@ public class PipeSnap : MonoBehaviour
             this.transform.rotation = snapRot;
             this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
-            snapObj.GetComponent<PipeNode>().pipePiece = this.gameObject;
+            snapObj.GetComponent<PipeNode>().UpdatePipePiece(gameObject);
         }
     }
 
@@ -129,7 +129,7 @@ public class PipeSnap : MonoBehaviour
         if (snapObj != null)
         {
             Debug.Log("called");
-            snapObj.GetComponent<PipeNode>().pipePiece = null;
+            snapObj.GetComponent<PipeNode>().UpdatePipePiece(null);
             snapObj = null;
 
         }

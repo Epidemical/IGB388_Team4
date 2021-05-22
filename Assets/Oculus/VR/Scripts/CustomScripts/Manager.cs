@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
+    //singleton code
+    public static Manager instance = null;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != null)
+            Destroy(gameObject);
+    }
+
+
     public GameObject lid;
     public GameObject door;
     public GameObject radioSwitch;
