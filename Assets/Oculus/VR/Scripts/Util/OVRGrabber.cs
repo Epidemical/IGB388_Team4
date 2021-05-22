@@ -19,8 +19,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class OVRGrabber : MonoBehaviour
 {
-    public Component outline;
-
     // Grip trigger thresholds for picking up objects, with some hysteresis.
     public float grabBegin = 0.55f;
     public float grabEnd = 0.35f;
@@ -271,7 +269,7 @@ public class OVRGrabber : MonoBehaviour
             m_grabbedObj = closestGrabbable;
             m_grabbedObj.GrabBegin(this, closestGrabbableCollider);
 
-            if (m_grabbedObj.GetComponent<PipeSnap>() != null)
+            //if (m_grabbedObj.GetComponent<PipeSnap>() != null)
                 //m_grabbedObj.GetComponent<PipeSnap>().PickUpReset();
 
             m_lastPos = transform.position;
@@ -372,8 +370,8 @@ public class OVRGrabber : MonoBehaviour
     {
         //Debug.Log("grabbable release called");
 
-        if (m_grabbedObj.GetComponent<PipeSnap>() != null)
-            m_grabbedObj.GetComponent<PipeSnap>().SnapToNode();
+        //if (m_grabbedObj.GetComponent<PipeSnap>() != null)
+            //m_grabbedObj.GetComponent<PipeSnap>().SnapToNode();
         m_grabbedObj.GrabEnd(linearVelocity, angularVelocity);
         if(m_parentHeldObject) m_grabbedObj.transform.parent = null;
         m_grabbedObj = null;

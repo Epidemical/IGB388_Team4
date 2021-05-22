@@ -113,6 +113,12 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        if (this.GetComponent<PipeSnap>() != null)
+        {
+            this.GetComponent<PipeSnap>().PickUpReset();
+            this.GetComponent<PipeSnap>().pickedUp = true;
+        }
     }
 
 	/// <summary>
@@ -126,6 +132,12 @@ public class OVRGrabbable : MonoBehaviour
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
         m_grabbedCollider = null;
+
+        if (this.GetComponent<PipeSnap>() != null)
+        {
+            this.GetComponent<PipeSnap>().SnapToNode();
+            this.GetComponent<PipeSnap>().pickedUp = false;
+        }
     }
 
     void Awake()

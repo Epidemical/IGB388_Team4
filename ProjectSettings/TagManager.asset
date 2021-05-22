@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PipeNode
+  - PipePiece
   layers:
   - Default
   - TransparentFX
