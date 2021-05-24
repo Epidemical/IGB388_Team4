@@ -310,6 +310,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayMat: {fileID: 2100000, guid: a641c21c443f4e142a8e1f3f42879db3, type: 2}
   pickedUp: 0
+  ends:
+  - {fileID: 3901697092671487378}
+  - {fileID: 1983551322958980937}
 --- !u!1 &1983551322958980937
 GameObject:
   m_ObjectHideFlags: 0

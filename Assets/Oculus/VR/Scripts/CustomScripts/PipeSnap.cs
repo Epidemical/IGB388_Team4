@@ -9,6 +9,7 @@ public class PipeSnap : MonoBehaviour
     private GameObject snapObj = null;
     private Quaternion snapRot = new Quaternion();
     public bool pickedUp = false;
+    public GameObject[] ends = new GameObject[2];
 
     private void OnTriggerEnter(Collider other)
     {

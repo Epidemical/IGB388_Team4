@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 3283904904206741145}
   m_Layer: 0
   m_Name: Straight Piece
-  m_TagString: Untagged
+  m_TagString: PipePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -307,6 +307,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayMat: {fileID: 2100000, guid: a641c21c443f4e142a8e1f3f42879db3, type: 2}
   pickedUp: 0
+  ends:
+  - {fileID: 342055869708278798}
+  - {fileID: 9152811640521975313}
 --- !u!1 &5788655609552309946
 GameObject:
   m_ObjectHideFlags: 0
