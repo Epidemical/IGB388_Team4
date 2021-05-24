@@ -19,6 +19,7 @@ public class Manager : MonoBehaviour
     public GameObject lid;
     public GameObject door;
     public GameObject radioSwitch;
+    public GameObject key;
 
     public int goal = 5;
     private int count = 0;
@@ -131,7 +132,7 @@ public class Manager : MonoBehaviour
 
     public void PipePuzzleRemove(GameObject node)
     {
-        Debug.Log(pipeConnections[node]);
+ 
         pipeConnections.Remove(node);
         //Debug.Log(pipeConnections.ContainsKey(node));
     }
@@ -185,5 +186,10 @@ public class Manager : MonoBehaviour
 
 
         return validPath;
+    }
+
+    public void DropKey()
+    {
+        key.SetActive(true);
     }
 }
