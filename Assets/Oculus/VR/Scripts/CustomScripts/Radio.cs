@@ -40,7 +40,7 @@ public class Radio : MonoBehaviour
             instructionAudio.volume = Convert.ToSingle(-.5 * Mathf.Cos((4/6)*progress * 2 * Mathf.PI) + .5);
 
             float newText = textStart + (progress * textRange);
-            Math.Round(newText, 2);
+            newText = (float) Math.Round(newText, 2);
             textObj.GetComponent<Text>().text = newText.ToString();
         }
     }
