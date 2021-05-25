@@ -120,7 +120,12 @@ public class OVRGrabbable : MonoBehaviour
             this.GetComponent<PipeSnap>().pickedUp = true;
         }
 
-        if(this.GetComponent<KeyDrop>() != null)
+        if (this.GetComponent<PaperSnap>() != null)
+        {
+            this.GetComponent<PaperSnap>().pickedUp = true;
+        }
+
+        if (this.GetComponent<KeyDrop>() != null)
         {
             this.GetComponent<KeyDrop>().DisconnectKey();
         }
@@ -142,6 +147,12 @@ public class OVRGrabbable : MonoBehaviour
         {
             this.GetComponent<PipeSnap>().SnapToNode();
             this.GetComponent<PipeSnap>().pickedUp = false;
+        }
+
+        if (this.GetComponent<PaperSnap>() != null)
+        {
+            this.GetComponent<PaperSnap>().SnapToNode();
+            this.GetComponent<PaperSnap>().pickedUp = false;
         }
     }
 

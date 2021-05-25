@@ -13,35 +13,15 @@ public class PipeSnap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "PipeNode" && pickedUp)
-        {
-            if (other.GetComponent<PipeNode>().pipePiece == null)
-            {
-                if (snapObj == null && displayObj == null)
-                {
-                    snapObj = other.gameObject;
-                    CheckRotation();
-                    CreateDisplayObj(snapObj);
-                }
-                else
-                {
-                    //if this node is closer than the previously found one
-                    if (Vector3.Distance(transform.position, other.transform.position) < Vector3.Distance(transform.position, snapObj.transform.position))
-                    {
-                        snapObj = other.gameObject;
-                        CheckRotation();
-                        CreateDisplayObj(snapObj);
-                    }
-                    else if (CheckRotation())
-                    {
-                        CreateDisplayObj(snapObj);
-                    }
-                }
-            }
-        }
+        SnapCheck(other);
     }
 
     private void OnTriggerStay(Collider other)
+    {
+        SnapCheck(other);
+    }
+
+    private void SnapCheck(Collider other)
     {
         if (other.tag == "PipeNode" && pickedUp)
         {
