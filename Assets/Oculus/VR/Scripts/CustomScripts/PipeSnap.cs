@@ -11,6 +11,16 @@ public class PipeSnap : MonoBehaviour
     public bool pickedUp = false;
     public GameObject[] ends = new GameObject[2];
 
+    private List<Quaternion> validAngles = new List<Quaternion>();
+
+    private void Start()
+    {
+        validAngles.Add(Quaternion.Euler(0, 0, 90));
+        validAngles.Add(Quaternion.Euler(90, 0, 90));
+        validAngles.Add(Quaternion.Euler(180, 0, 90));
+        validAngles.Add(Quaternion.Euler(270, 0, 90));
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         SnapCheck(other);
@@ -119,17 +129,56 @@ public class PipeSnap : MonoBehaviour
     //returns false if the rotation is the same, true if rotation has changed;
     private bool CheckRotation()
     {
+        //snapRot = snapObj.transform.rotation;
+
+        //return true;
+
+        //Quaternion currentAngle = this.transform.rotation;
+
+        //float timesDivided = Mathf.Round(currentAngle.eulerAngles.x / 90f);
+        //float xRot = Mathf.Abs(timesDivided) * 90;
+
+        //if (xRot == snapRot.eulerAngles.x)
+        //    return false;
+        //else
+        //{
+        //    snapRot = Quaternion.Euler(xRot, snapObj.transform.rotation.eulerAngles.y, snapObj.transform.rotation.eulerAngles.z);
+        //    return true;
+        //}
+
         Quaternion currentAngle = this.transform.rotation;
 
-        float timesDivided = Mathf.Round(currentAngle.eulerAngles.y / 90f);
-        float yRot = Mathf.Abs(timesDivided) * 90;
+        //float timesDivided = Mathf.Round(currentAngle.eulerAngles.x / 90f);
+        float xRot = currentAngle.eulerAngles.x;
 
-        if (yRot == snapRot.eulerAngles.y)
-            return false;
-        else
+        while(xRot < 0)
         {
-            snapRot = Quaternion.Euler(0, yRot, 0);
-            return true;
+            xRot += 360;
         }
+
+        while(xRot > 360)
+        {
+            xRot -= 360;
+        }
+
+        float angleDif = 370;
+
+        foreach(Quaternion angle in validAngles)
+        {
+            if(Mathf.Abs(xRot - angle.eulerAngles.x) < angleDif)
+            {
+                angleDif = Mathf.Abs(xRot - angle.eulerAngles.x);
+                snapRot = angle;
+            }
+        }
+        return true;
+        //if (xRot == snapRot.eulerAngles.x)
+        //    return false;
+        //else
+        //{
+        //    snapRot = Quaternion.Euler(xRot, snapObj.transform.rotation.eulerAngles.y, snapObj.transform.rotation.eulerAngles.z);
+        //    return true;
+        //}
+
     }
 }
