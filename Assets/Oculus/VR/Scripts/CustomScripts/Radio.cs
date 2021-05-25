@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class Radio : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class Radio : MonoBehaviour
 
     private bool on = false;
     private Switch radioSwitch;
+
+    public GameObject textObj;
+    private float textStart = 80f;
+    private float textRange = 80f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +39,9 @@ public class Radio : MonoBehaviour
             static2.volume =  Convert.ToSingle(.5 * Mathf.Sin(progress * 2 * Mathf.PI) + .5);
             instructionAudio.volume = Convert.ToSingle(-.5 * Mathf.Cos((4/6)*progress * 2 * Mathf.PI) + .5);
 
+            float newText = textStart + (progress * textRange);
+            Math.Round(newText, 2);
+            textObj.GetComponent<Text>().text = newText.ToString();
         }
     }
 
@@ -45,12 +54,16 @@ public class Radio : MonoBehaviour
             static1.Play();
             static2.Play();
             instructionAudio.Play();
+
+            textObj.SetActive(true);
         }
         else
         {
             static1.Stop();
             static2.Stop();
             instructionAudio.Stop();
+
+            textObj.SetActive(false);
         }
     }
 }

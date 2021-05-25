@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PipeNode
   - PipePiece
+  - JournalNode
   layers:
   - Default
   - TransparentFX
