@@ -48,6 +48,12 @@ public class Manager : MonoBehaviour
     public Text rightText;
     public int briefcaseCode = 001;
 
+    //note appearance
+    public GameObject note1;
+    public GameObject note2;
+    public GameObject note3;
+
+
     private void Start()
     {
         GameObject buttonCollection = GameObject.Find("SimonSaysButtons");
@@ -78,7 +84,10 @@ public class Manager : MonoBehaviour
 
         if (digL == int.Parse(leftText.text) 
             && digM == int.Parse(middleText.text)
-            && digR == int.Parse(rightText.text))
+            && digR == int.Parse(rightText.text)
+            && note1.activeSelf
+            && note2.activeSelf
+            && note3.activeSelf)
             OpenBriefcase(lid);
     }
 
@@ -121,7 +130,7 @@ public class Manager : MonoBehaviour
 
         if(SSPatternIndex == SSPatternOrder.Length - 1)
         {
-            Debug.Log("SIMON SAYS COMPLETE");
+            note2.SetActive(true);
         }
     }
 
@@ -138,7 +147,7 @@ public class Manager : MonoBehaviour
         searchedPipeKeys = new List<GameObject>();
 
         if (complete)
-            Debug.Log("PUZZLE DONE");
+            note1.SetActive(true);
         else
             Debug.Log("PUZZLE INCOMPLETE");
     }

@@ -31,5 +31,6 @@ public class KeyDrop : MonoBehaviour
         pickedUp = true;
         Destroy(this.GetComponent<SpringJoint>());
         Destroy(LR);
+        Destroy(this);
     }
 }

@@ -24,7 +24,6 @@ public class PaperSnap : MonoBehaviour
         if (other.tag == "JournalNode" && pickedUp)
         {
             Debug.Log("journal node found");
-            string objName = this.gameObject.name;
             bool goAhead = CorrectNode(other.gameObject);
 
             if (goAhead && snapObj == null && displayObj == null)
@@ -82,7 +81,7 @@ public class PaperSnap : MonoBehaviour
             Destroy(displayObj);
 
         displayObj = Instantiate(this.gameObject, node.transform.position, node.transform.rotation);
-        displayObj.transform.localScale = this.transform.localScale/6;
+        displayObj.transform.localScale = this.transform.localScale;
 
         //disable scripts
         Destroy(displayObj.GetComponent<OVRGrabbable>());
