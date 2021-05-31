@@ -18,6 +18,7 @@ public class MyButton : MonoBehaviour {
     public ButtonEvent downEvent;
     public Axis direction = Axis.Y;
     public bool movingToNegative = true;
+    public bool alwaysReset = false;
 
     Vector3 startPos;
     Rigidbody rb;
@@ -130,6 +131,9 @@ public class MyButton : MonoBehaviour {
                 transform.position = new Vector3(transform.position.x, transform.position.y, startPos.z);
             }
         }
+
+        if (pressed && alwaysReset)
+            ResetButton();
 
     }
 

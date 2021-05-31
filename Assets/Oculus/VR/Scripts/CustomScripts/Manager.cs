@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
@@ -40,6 +42,12 @@ public class Manager : MonoBehaviour
     public GameObject middleNode;
     public List<GameObject> middleConnections;
 
+    // briefcase variables
+    public Text leftText;
+    public Text middleText;
+    public Text rightText;
+    public int briefcaseCode = 001;
+
     private void Start()
     {
         GameObject buttonCollection = GameObject.Find("SimonSaysButtons");
@@ -62,10 +70,15 @@ public class Manager : MonoBehaviour
         print("Button Pressed");
     }
 
-    public void ButtonPressed()
+    public void CheckCode()
     {
-        count++;
-        if (count == goal)
+        int digL = Mathf.FloorToInt(briefcaseCode / 100);
+        int digM = Mathf.FloorToInt((briefcaseCode % 100) / 10);
+        int digR = Mathf.FloorToInt((briefcaseCode % 100) % 10);
+
+        if (digL == int.Parse(leftText.text) 
+            && digM == int.Parse(middleText.text)
+            && digR == int.Parse(rightText.text))
             OpenBriefcase(lid);
     }
 
@@ -191,5 +204,49 @@ public class Manager : MonoBehaviour
     public void DropKey()
     {
         key.SetActive(true);
+    }
+
+    public void ChangeBriefcaseNumberLeft(int direction)
+    {
+        int newNumber = int.Parse(leftText.text) + direction;
+
+        if (newNumber > 9)
+            newNumber = 0;
+        else if (newNumber < 0)
+            newNumber = 9;
+
+        leftText.text = newNumber.ToString();
+
+        CheckCode();
+    }
+
+    public void ChangeBriefcaseNumberMiddle(int direction)
+    {
+        int newNumber = int.Parse(middleText.text) + direction;
+
+        if (newNumber > 9)
+            newNumber = 0;
+        else if (newNumber < 0)
+            newNumber = 9;
+
+        middleText.text = newNumber.ToString();
+
+        CheckCode();
+
+    }
+
+    public void ChangeBriefcaseNumberRight(int direction)
+    {
+        int newNumber = int.Parse(rightText.text) + direction;
+
+        if (newNumber > 9)
+            newNumber = 0;
+        else if (newNumber < 0)
+            newNumber = 9;
+
+        rightText.text = newNumber.ToString();
+
+        CheckCode();
+
     }
 }

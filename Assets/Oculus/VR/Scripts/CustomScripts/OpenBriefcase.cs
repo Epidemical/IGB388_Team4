@@ -16,12 +16,14 @@ public class OpenBriefcase : MonoBehaviour
     private bool moveLid = false;
     private Quaternion startRot;
     private Quaternion endRot;
+    private Rigidbody rb;
     
 
     // Start is called before the first frame update
     void Start()
     {
         startRot = transform.rotation;
+        rb = this.GetComponent<Rigidbody>();
 
         switch (direction)
         {
@@ -47,17 +49,47 @@ public class OpenBriefcase : MonoBehaviour
 
             //Debug.Log(Quaternion.Lerp(startRot, endRot, fractionOfJourney).eulerAngles);
             this.transform.rotation = Quaternion.Lerp(startRot, endRot, fractionOfJourney);
+
+            if(fractionOfJourney >= 0.95)
+            {
+                moveLid = false;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
+
         }
         
     }
 
     public void OpenCase()
     {
-        //Debug.LogWarning("Case should open now");
+        switch (direction)
+        {
+            case RotateOn.X:
+                rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+                break;
+            case RotateOn.Z:
+                rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
+                break;
+        }
 
         startTime = Time.time;
         moveLid = true;
         GetComponent<AudioSource>().Play();
+
+        MyButton[] buttons = this.gameObject.GetComponentsInChildren<MyButton>();
+
+        foreach(MyButton button in buttons)
+        {
+            button.alwaysReset = false;
+            button.pressed = true;
+        }
+
+        Rigidbody[] rbs = this.gameObject.GetComponentsInChildren<Rigidbody>();
+
+        foreach (Rigidbody body in rbs)
+        {
+            body.constraints = RigidbodyConstraints.FreezeAll;
+        }
 
     }
 }

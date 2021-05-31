@@ -27,6 +27,9 @@ public class Pully : MonoBehaviour
         {
             called = true;
             Manager.instance.DropKey();
+
+            //play sound and haptics here
+            gameObject.GetComponent<OVRGrabbable>().grabbedBy.GetComponent<OculusHaptics>().Vibrate(VibrationForce.Hard);
         }
     }
 }
