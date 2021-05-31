@@ -50,6 +50,19 @@ MonoBehaviour:
   m_controller: 1
   m_parentTransform: {fileID: 0}
   m_player: {fileID: 8132054397878737766}
+--- !u!114 &2004980332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4674236985801469778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5b1dba759af454c8e2bf4357a2cb48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerMask: 1
 --- !u!54 &6203662615898622177
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -100,6 +113,19 @@ MonoBehaviour:
   m_controller: 2
   m_parentTransform: {fileID: 0}
   m_player: {fileID: 8132054397878737766}
+--- !u!114 &991998000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4674236985801504426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5b1dba759af454c8e2bf4357a2cb48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerMask: 2
 --- !u!1 &8132054397878737766
 GameObject:
   m_ObjectHideFlags: 0

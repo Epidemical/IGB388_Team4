@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,10 +21,15 @@ public class MyButton : MonoBehaviour {
 
     Vector3 startPos;
     Rigidbody rb;
+    OculusHaptics hapticsLeft;
+    OculusHaptics hapticsRight;
 
     void Start() {
         startPos = transform.position;
         rb = GetComponent<Rigidbody>();
+        hapticsLeft = GameObject.Find("LeftHandAnchor").GetComponent<OculusHaptics>();
+        hapticsRight = GameObject.Find("RightHandAnchor").GetComponent<OculusHaptics>();
+
 
         ResetButton();
     }
@@ -83,6 +89,16 @@ public class MyButton : MonoBehaviour {
                 // If we have an event, invoke it
                 downEvent?.Invoke();
                 GetComponent<AudioSource>().Play();
+
+                if(Vector3.Distance(this.gameObject.transform.position, hapticsLeft.gameObject.transform.position)
+                    < Vector3.Distance(this.gameObject.transform.position, hapticsRight.gameObject.transform.position))
+                {
+                    hapticsLeft.Vibrate(VibrationForce.Light);
+                }
+                else
+                {
+                    hapticsRight.Vibrate(VibrationForce.Light);
+                }
             }
         }
 

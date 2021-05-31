@@ -114,6 +114,8 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
+        m_grabbedBy.GetComponent<OculusHaptics>().Vibrate(VibrationForce.Light);
+
         if (this.GetComponent<PipeSnap>() != null)
         {
             this.GetComponent<PipeSnap>().PickUpReset();
@@ -136,12 +138,16 @@ public class OVRGrabbable : MonoBehaviour
 	/// </summary>
 	virtual public void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
     {
+        m_grabbedBy.GetComponent<OculusHaptics>().Vibrate(VibrationForce.Light);
+
+
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.isKinematic = m_grabbedKinematic;
         rb.velocity = linearVelocity;
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
         m_grabbedCollider = null;
+
 
         if (this.GetComponent<PipeSnap>() != null)
         {
