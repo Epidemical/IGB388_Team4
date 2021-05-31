@@ -37,7 +37,7 @@ public class Radio : MonoBehaviour
 
             static1.volume =  Convert.ToSingle(.5 * Mathf.Cos(progress * 4 * Mathf.PI) + .5);
             static2.volume =  Convert.ToSingle(.5 * Mathf.Sin(progress * 2 * Mathf.PI) + .5);
-            instructionAudio.volume = Convert.ToSingle(-.5 * Mathf.Cos((4/6)*progress * 2 * Mathf.PI) + .5);
+            instructionAudio.volume = Convert.ToSingle(-.5 * Mathf.Cos((4/3)*progress * Mathf.PI) + .5);
 
             float newText = textStart + (progress * textRange);
             newText = (float) Math.Round(newText, 2);
