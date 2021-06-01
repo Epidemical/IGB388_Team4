@@ -33,9 +33,14 @@ public class OVRGrabbable : MonoBehaviour
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
 
-	/// <summary>
-	/// If true, the object can currently be grabbed.
-	/// </summary>
+    public Vector3 startPosition = Vector3.zero;
+    public Quaternion startRotation = Quaternion.identity;
+    private GameObject anchor = null;
+    private Material stringMat = null;
+
+    /// <summary>
+    /// If true, the object can currently be grabbed.
+    /// </summary>
     public bool allowOffhandGrab
     {
         get { return m_allowOffhandGrab; }
@@ -162,6 +167,20 @@ public class OVRGrabbable : MonoBehaviour
         }
     }
 
+    public void ReturnToStart()
+    {
+        transform.position = startPosition;
+        transform.rotation = startRotation;
+
+        //add some logic about reattaching string objects
+        if(anchor != null)
+        {
+            this.gameObject.AddComponent<KeyDrop>();
+            this.GetComponent<KeyDrop>().anchor = this.anchor;
+            this.GetComponent<KeyDrop>().LRMat = stringMat;
+        }
+    }
+
     void Awake()
     {
         if (m_grabPoints.Length == 0)
@@ -176,6 +195,19 @@ public class OVRGrabbable : MonoBehaviour
             // Create a default grab point
             m_grabPoints = new Collider[1] { collider };
         }
+
+        if (startPosition == Vector3.zero)
+        {
+            startPosition = transform.position;
+            startRotation = transform.rotation;
+        }
+
+        try
+        {
+            anchor = this.gameObject.GetComponent<KeyDrop>().anchor;
+            stringMat = anchor.GetComponent<LineRenderer>().material;
+        }
+        catch { }
     }
 
     protected virtual void Start()

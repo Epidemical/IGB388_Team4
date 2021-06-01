@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 932368221}
   m_Layer: 0
   m_Name: Corner Piece
-  m_TagString: Untagged
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,6 +283,7 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+  startPosition: {fileID: 0}
 --- !u!65 &152726540975360766
 BoxCollider:
   m_ObjectHideFlags: 0

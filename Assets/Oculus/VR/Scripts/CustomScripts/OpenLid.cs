@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum RotateOn { X, Z};
 
-public class OpenBriefcase : MonoBehaviour
+public class OpenLid : MonoBehaviour
 {
     private float maxAngle;
 
@@ -31,7 +31,7 @@ public class OpenBriefcase : MonoBehaviour
                 endRot = Quaternion.Euler(-goalAngle, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
                 break;
             case RotateOn.Z:
-                endRot = Quaternion.Euler(-goalAngle, transform.rotation.eulerAngles.z, transform.rotation.eulerAngles.y);
+                endRot = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, goalAngle);
                 break;
         }
         //endRot = Quaternion.Euler(-goalAngle, axis.transform.rotation.eulerAngles.z, axis.transform.rotation.eulerAngles.y);

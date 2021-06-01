@@ -18,13 +18,11 @@ public class Manager : MonoBehaviour
     }
 
 
-    public GameObject lid;
+    public GameObject briefcaseLid;
     public GameObject door;
     public GameObject radioSwitch;
     public GameObject key;
-
-    public int goal = 5;
-    private int count = 0;
+    public GameObject boxLid;
 
     //simon says variables
     public int[] SSPatternOrder = new int[6];
@@ -69,6 +67,8 @@ public class Manager : MonoBehaviour
         pipeConnections.Add(startNode, new List<GameObject> { startNodeConnection });
         pipeConnections.Add(endNode, new List<GameObject> { endNodeConnection });
         pipeConnections.Add(middleNode, middleConnections);
+
+        key.SetActive(false);
     }
 
     public void ButtonTest()
@@ -88,13 +88,13 @@ public class Manager : MonoBehaviour
             && note1.activeSelf
             && note2.activeSelf
             && note3.activeSelf)
-            OpenBriefcase(lid);
+            OpenBriefcase(briefcaseLid);
     }
 
 
     private void OpenBriefcase(GameObject lid)
     {
-        lid.GetComponent<OpenBriefcase>().OpenCase();
+        lid.GetComponent<OpenLid>().OpenCase();
         //Debug.Log("BRIEFCASE OPENING");
         //try
         //{
@@ -256,6 +256,15 @@ public class Manager : MonoBehaviour
         rightText.text = newNumber.ToString();
 
         CheckCode();
+    }
 
+    public void OpenBox()
+    {
+        if (!note3.activeSelf)
+        {
+            note3.SetActive(true);
+            boxLid.GetComponent<OpenLid>().OpenCase();
+        }
+        
     }
 }
