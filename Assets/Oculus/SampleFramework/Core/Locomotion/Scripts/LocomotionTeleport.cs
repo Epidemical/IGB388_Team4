@@ -42,6 +42,32 @@ public class LocomotionTeleport : MonoBehaviour
 		PostTeleport
 	}
 
+	public GameObject teleportPoints;
+	private void Update()
+	{
+		switch (CurrentState)
+		{
+			case States.Ready:
+				teleportPoints.SetActive(false);
+				break;
+			case States.Aim:
+				teleportPoints.SetActive(true);
+				break;
+			case States.CancelAim:
+				teleportPoints.SetActive(false);
+				break;
+			case States.CancelTeleport:
+				teleportPoints.SetActive(false);
+				break;
+			case States.Teleporting:
+				teleportPoints.SetActive(true);
+				break;
+			case States.PostTeleport:
+				teleportPoints.SetActive(false);
+				break;
+		}
+	}
+
 	#region Linear movement control booleans.
 	/// <summary>
 	/// Allow linear movement prior to the teleport system being activated.
