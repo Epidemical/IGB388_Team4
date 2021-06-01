@@ -261,11 +261,18 @@ public class TeleportInputHandlerTouch : TeleportInputHandlerHMD
 	public override void GetAimData(out Ray aimRay)
 	{
 		OVRInput.Controller sourceController = AimingController;
+		Transform t = null;
 		if(sourceController == OVRInput.Controller.Touch)
 		{
-			sourceController = InitiatingController;
+			//sourceController = InitiatingController;
+			if (OVRInput.Get(OVRInput.RawButton.LIndexTrigger) || OVRInput.GetUp(OVRInput.RawButton.LIndexTrigger))
+				t = LeftHand;
+			//sourceController = OVRInput.Controller.LTouch;
+			else
+				t = RightHand;
+				//sourceController = OVRInput.Controller.RTouch;
 		}
-		Transform t = (sourceController == OVRInput.Controller.LTouch) ? LeftHand : RightHand;
+		//Transform t = (sourceController == OVRInput.Controller.LTouch) ? LeftHand : RightHand;
 		aimRay = new Ray(t.position, t.forward);
 	}
 }
