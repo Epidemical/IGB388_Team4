@@ -60,7 +60,7 @@ public class LocomotionTeleport : MonoBehaviour
 				teleportPoints.SetActive(false);
 				break;
 			case States.Teleporting:
-				teleportPoints.SetActive(true);
+				teleportPoints.SetActive(false);
 				break;
 			case States.PostTeleport:
 				teleportPoints.SetActive(false);
