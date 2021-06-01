@@ -147,16 +147,17 @@ public class PipeSnap : MonoBehaviour
         //}
 
         Quaternion currentAngle = this.transform.rotation;
+        //currentAngle = this.transform.ro;
 
         //float timesDivided = Mathf.Round(currentAngle.eulerAngles.x / 90f);
         float xRot = currentAngle.eulerAngles.x;
-
-        while(xRot < 0)
+        Debug.Log(currentAngle.eulerAngles);
+        while (xRot < 0)
         {
             xRot += 360;
         }
 
-        while(xRot > 360)
+        while (xRot > 360)
         {
             xRot -= 360;
         }
@@ -165,12 +166,25 @@ public class PipeSnap : MonoBehaviour
 
         foreach(Quaternion angle in validAngles)
         {
-            if(Mathf.Abs(xRot - angle.eulerAngles.x) < angleDif)
+            float smallerDif = Mathf.Min(Mathf.Abs(360 - xRot), Mathf.Abs(xRot - angle.eulerAngles.x));
+
+            if(smallerDif < angleDif)
             {
-                angleDif = Mathf.Abs(xRot - angle.eulerAngles.x);
+                angleDif = smallerDif;
+
                 snapRot = angle;
             }
         }
+
+        //Debug.Log(Mathf.Abs(snapRot.eulerAngles.z - 90f));
+        //Debug.Log(snapRot.eulerAngles.x == 0f);
+
+        if (Mathf.Abs(currentAngle.eulerAngles.z - 90f) > 90f && snapRot.eulerAngles.x == 0f)
+        {
+            snapRot = Quaternion.Euler(180, 0, 90);
+        }
+        Debug.Log(snapRot.eulerAngles);
+
         return true;
         //if (xRot == snapRot.eulerAngles.x)
         //    return false;
