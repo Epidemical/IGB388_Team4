@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Train Cart Greybox.unity
+    guid: dcde5f598a006a54fb37ee306330310e
+  - enabled: 1
     path: Assets/Oculus/SampleFramework/Usage/CustomControllers.unity
     guid: e0f49aa4174f98941b88699b5fecddc0
   m_configObjects:
