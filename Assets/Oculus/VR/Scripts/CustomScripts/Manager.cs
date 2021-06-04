@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
@@ -52,6 +53,12 @@ public class Manager : MonoBehaviour
     public GameObject note3;
 
 
+    //game start and end variables
+    float endStartTime;
+    float endDelay = 5f;
+    bool gameDone = false;
+    public OVRScreenFade fadeFunctionality;
+
     private void Start()
     {
         GameObject buttonCollection = GameObject.Find("SimonSaysButtons");
@@ -71,6 +78,15 @@ public class Manager : MonoBehaviour
         key.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (gameDone && Time.time > endStartTime + endDelay)
+        {
+            ReloadScene();
+
+        }
+    }
+
     public void ButtonTest()
     {
         print("Button Pressed");
@@ -88,7 +104,13 @@ public class Manager : MonoBehaviour
             && note1.activeSelf
             && note2.activeSelf
             && note3.activeSelf)
+        {
+            gameDone = true;
+            fadeFunctionality.fadeTime = endDelay;
+            fadeFunctionality.FadeOut();
+            endStartTime = Time.time;
             OpenBriefcase(briefcaseLid);
+        }
     }
 
 
@@ -131,6 +153,7 @@ public class Manager : MonoBehaviour
         if(SSPatternIndex == SSPatternOrder.Length - 1)
         {
             note2.SetActive(true);
+            radioSwitch.GetComponent<Radio>().ChangeState();
         }
     }
 
@@ -266,5 +289,11 @@ public class Manager : MonoBehaviour
             boxLid.GetComponent<OpenLid>().OpenCase();
         }
         
+    }
+
+    public void ReloadScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }
